@@ -18,24 +18,8 @@ const activateStyle = (elm) => {
 
 
 
-const codeToDOM = `<div class="layout-container">
-<div class="toolkit">
-    <button id = "headings-btn" class="centered btn-dark toolkit-btn" title="Show Headings"><!--i class="fa-light fa-heading"></i--> H</button>
-    <button id = "list-btn" class="centered btn-dark toolkit-btn" title="Show Lists"><!--i class="fa-light fa-heading"></i--> Ul</button>
-    <button class="centered btn-dark toolkit-btn" title="Currently Focused element while tabbing"><!--i class="fa-light fa-heading"></i--> F</button>
-</div>
-</div>`
-
-
-
-
-const bodyElement = document.querySelector('body')
-
-// Adding container for the identification divs
-
-const divContainer = document.createElement("div")
-
-/*divContainer.style.position = 'fixed'
+/*
+divContainer.style.position = 'fixed'
 divContainer.style.top = '0'
 divContainer.style.left = '0'
 divContainer.style.visibility = 'visible'

@@ -18,8 +18,9 @@
     outline-offset: 2px;
 }
 .btn-dark:active{
-    background-color: white;
-    color: #132342;
+    background-color: #3e5b98;
+    border-radius: 5px;
+    border-bottom: none;
 }
 .separator{
     width:25px;
