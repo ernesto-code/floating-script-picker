@@ -7,11 +7,57 @@
     <title>Document</title>
     <div></div>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://use.fontawesome.com/7a2b195f7b.js"></script>
 
 </head>
 <body>
-    <div style="margin: 40px;width: 200px;">
+    <br/>
+    <br/>
+    <br/>
+    <h1 id="h1" style="margin:10px;display:block">My headings</h1>
+    <!--ICONS-->
+    <div style="margin: 100px;padding: 10px;width: 600px;background-color: #132342;color:white">
+
+        <h4 id="h4">Icons selection</h4>
+                
+        <i class="fa-solid fa-universal-access fa-2x" ></i>
+        <i class="fa-solid fa-vector-square fa-2x"></i>
+        
+        
+        <i class="fa-solid fa-toolbox fa-2x"></i>
+        
+        <i class="fa-solid fa-table-cells-large fa-2x"></i>
+        <i class="fa-solid fa-table-list fa-2x"></i>
+        <i class="fa-solid fa-table-columns fa-2x"></i>
+        <i class="fa-solid fa-square-h fa-2x"></i>
+        
+        <i class="fa-solid fa-rotate-left fa-2x"></i>
+        <i class="fa-solid fa-right-left fa-2x"></i>
+        <i class="fa-solid fa-photo-film fa-2x"></i>
+        <i class="fa-solid fa-object-ungroup fa-2x"></i>
+        <i class="fa-solid fa-object-group fa-2x"></i>
+        <i class="fa-solid fa-minimize fa-2x"></i>
+        
+        <i class="fa-solid fa-list-ol fa-2x"></i>
+        <i class="fa-solid fa-grip-vertical fa-2x"></i>
+        <i class="fa-solid fa-ellipsis-vertical fa-2x"></i>
+        <i class="fa-solid fa-ellipsis fa-2x"></i>
+        <i class="fa-solid fa-display fa-2x"></i>
+        <i class="fa-solid fa-compress fa-2x"></i>
+        
+        <i class="fa-solid fa-chalkboard-user fa-2x"></i>
+        <i class="fa-solid fa-caret-right fa-2x"></i>
+        <i class="fa-solid fa-caret-left fa-2x"></i>
+        <i class="fa-solid fa-bug-slash fa-2x"></i>
+        <i class="fa-solid fa-border-top-left fa-2x"></i>
+        <i class="fa-solid fa-border-all fa-2x"></i>
+        <i class="fa-regular fa-comment-dots fa-2x"></i>
+        <i class="fa-regular fa-bell-slash fa-2x"></i>
+    </div>
+
+    <div style="margin: 100px;width: 200px;">
+
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor totam nesciunt illum itaque molestias, voluptatum saepe voluptates et reiciendis quos omnis enim sint soluta sequi molestiae natus! Asperiores, quisquam quibusdam?
     <br>
     <br>
@@ -27,16 +73,111 @@
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor totam nesciunt illum itaque molestias, voluptatum saepe voluptates et reiciendis quos omnis enim sint soluta sequi molestiae natus! Asperiores, quisquam quibusdam?
     <br>
     <br>
+    <h2>Fruits</h2>
+    <ul>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Cherries</li>
+    </ul>
+    <h2>Prefered OS</h2>
+    <ol>
+        <li>Mac OS</li>
+        <li>Linux</li>
+        <li>Windows</li>
+    </ol>
+    <img src="avatar1.png" alt="" />
+    <h2>External links</h2>
+        <a href="https://facebook.com">Facebook</a>
+        <a href="https://facebook.com">Instagram</a>
+        <a href="https://facebook.com">Twiter</a>
     </div>
-    <!--button class="btn-dark">Scripts <span>+</span></button-->
-    <div class="layout-container">
-        <div class="toolkit">
-            <button id = "headings-btn" class="centered btn-dark toolkit-btn" title="Show Headings"><!--i class="fa-light fa-heading"></i--> H</button>
-            <button id = "list-btn" class="centered btn-dark toolkit-btn" title="Show Lists"><!--i class="fa-light fa-heading"></i--> Ul</button>
-            <button class="centered btn-dark toolkit-btn" title="Currently Focused element while tabbing"><!--i class="fa-light fa-heading"></i--> F</button>
-        </div>
+<img src="avatar1.png" alt="My alternative text to the images My alternative text to the images My alternative text to the images " />
+
+    <h2> Email subscription:</h2>
+        <form action="">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email">
+            <button type="submit">Subscribe!</button>
+        </form>
+    <div style="width: 200px;height: 200px;background-image: 'avatar1.png'" role="img" aria-label="My avatar image">
+   
+
+    <div class="layout-container" id="layout-container">
+        <div id="marked-headings"></div>
+        <div id="marked-listslistitems"></div>
+        <div id="marked-brs"></div>
+        <div id="marked-liveregions"></div>
+        <div id="marked-images-alt-text"></div>
+        <div id="marked-images-null-alt-text"></div>
+        <div id="marked-hrefs"></div>
+        <div id="marked-focused-elements"></div>
     </div>
+
+    <div class="toolkit">
+        <!-- Tooltip -->
+        <!--div class="tooltip">
+            <div class="tooltip-icon"><i class="fa-solid fa-caret-left"></i></div>
+            <div class="tooltip-text">Heading asdasdas das</div>
+        </div   -->
+        <!-- Headings -->
+        <button id = "headings-btn" class="centered btn-dark toolkit-btn">
+            <i class="fa-solid fa-h"></i>
+        </button>
+        <!-- Lists/Listitems -->
+        <button id = "lists-btn" class="centered btn-dark toolkit-btn">
+            <i class="fa-solid fa-list-ul"></i>
+        </button>
+        <!-- Alternative text -->
+        <button id = 'image-alt-text-btn' class="centered btn-dark toolkit-btn" >
+            <i class="fa-regular fa-image fa-lg"></i>
+        </button>
+        <!-- Null alternative text -->
+        <button id = 'image-null-alt-text-btn' class="centered btn-dark toolkit-btn" >
+            <i class="fa-regular fa-images fa-lg"></i>
+        </button>
+        <!-- href -->
+        <button id='href-btn' class="centered btn-dark toolkit-btn">
+            href
+        </button>
+        <!-- Br finder -->
+        <button id='brfinder-btn' class="centered btn-dark toolkit-btn" >
+            Br
+        </button>
+        <!-- Live regions -->
+        <button id = 'liveregions-btn' class="centered btn-dark toolkit-btn">
+            <i class="fa-solid fa-ear-listen fa-lg"></i>
+        </button>
+        <!-- Focus indicator -->
+        <button id ='focus-indicator-btn' class="centered btn-dark toolkit-btn">
+            <i class="fa-solid fa-vector-square"></i>
+        </button>
+        <!-- currently focused-->
+        <button id ='currently-focused-btn' class="centered btn-dark toolkit-btn">
+            <i class="fa-solid fa-expand"></i>
+        </button>
+        <!-- Text spacing -->
+        <button id ='text-spacing-btn' class="centered btn-dark toolkit-btn">
+            <i class="fa-solid fa-text-height"></i>
+        </button>
+        
+
+       
+
+
+        <!-- Page title -->
+        <button class="centered btn-dark toolkit-btn">
+            <i class="fa-solid fa-spell-check fa-lg"></i>
+        </button>
+        <!-- Aria-label -->
+        <button class="centered btn-dark toolkit-btn">
+           
+        </button>
+        
+        
+        
     </div>
+    
+
     <script src="script.js"></script>
 </body>
 </html>

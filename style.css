@@ -17,11 +17,6 @@
     outline:#132342 2px solid;
     outline-offset: 2px;
 }
-.btn-dark:active{
-    background-color: #3e5b98;
-    border-radius: 5px;
-    border-bottom: none;
-}
 .separator{
     width:25px;
     height: 2px;
@@ -45,8 +40,7 @@
     border-radius: 5px;
 }
 .toolkit-active-btn{
-    
-    background-color: #3e5b98;
+    background-color: #3e5b98 !important;
     border-radius: 5px;
     border-bottom: none;
 }
@@ -59,7 +53,7 @@
     top: 0px;
     left: 0px; 
     visibility: visible; 
-    z-index: 2147483646;
+    z-index: 2147483000;
     display: flex;
     flex-direction: column;
 }
@@ -72,5 +66,34 @@
     margin: 20px; 
     background-color: #132342; 
     border-radius: 10px;
+    z-index: 2147483646;
 }
+i{
+    /*margin: 20px 5px;*/
+}
+
+/*Tool tip*/
+.tooltip{
+    position: fixed;
+    top:0;
+    left: 60px;
+    width: fit-content;
+    height: 20px;
+    padding: 10px;
+    background-color: black;
+    border: white thin solid;
+    border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    
+}
+.tooltip-text{
+    color: white;
+}
+.tooltip-icon{
+    position: relative;
+    top:0px;
+    left:-15px;
+}
+
 
