@@ -97,7 +97,7 @@
         <form action="">
             <label for="email">Email</label>
             <input type="email" name="email" id="email">
-            <button type="submit">Subscribe!</button>
+            <button type="submit" aria-label="Submit">Subscribe!</button>
         </form>
     <div style="width: 200px;height: 200px;background-image: 'avatar1.png'" role="img" aria-label="My avatar image">
    
@@ -110,9 +110,13 @@
         <div id="marked-images-alt-text"></div>
         <div id="marked-images-null-alt-text"></div>
         <div id="marked-hrefs"></div>
-        <div id="marked-focused-elements"></div>
+        <div id="marked-aria-label"></div>
     </div>
 
+    <!--div id='page-title-container' class="tooltip">
+        <div class="tooltip-text"> Page title: <strong>Starbucks Home page</strong> </div>
+        <button id="close-page-title-btn" class="tooltip-btn"><i class="fa-solid fa-times"></i></button>
+    </div-->
     <div class="toolkit">
         <!-- Tooltip -->
         <!--div class="tooltip">
@@ -159,19 +163,15 @@
         <button id ='text-spacing-btn' class="centered btn-dark toolkit-btn">
             <i class="fa-solid fa-text-height"></i>
         </button>
-        
-
-       
-
-
-        <!-- Page title -->
-        <button class="centered btn-dark toolkit-btn">
+        <!-- Aria-label -->
+        <button id = "aria-labels-btn" class="centered btn-dark toolkit-btn">
             <i class="fa-solid fa-spell-check fa-lg"></i>
         </button>
-        <!-- Aria-label -->
-        <button class="centered btn-dark toolkit-btn">
-           
+        <!-- Page title -->
+        <button id="page-title-btn" class="centered btn-dark toolkit-btn" style="border-bottom: none;">
+            Title
         </button>
+ 
         
         
         

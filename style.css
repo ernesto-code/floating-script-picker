@@ -95,5 +95,13 @@ i{
     top:0px;
     left:-15px;
 }
+.tooltip-btn{
+    margin-left: 15px;
+}
+#page-title-container{
+    position: fixed;
+    top:10px;
+    left: 80px;
+}
 
 

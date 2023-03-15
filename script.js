@@ -10,8 +10,12 @@ const imageNullAltTextbtn = document.getElementById('image-null-alt-text-btn')
 const hrefBtn = document.getElementById('href-btn')
 const focusIndicatorBtn = document.getElementById('focus-indicator-btn')
 const currentlyFocusedBtn = document.getElementById('currently-focused-btn')
-
 const textSpacingBtn = document.getElementById('text-spacing-btn')
+const ariaLabelsBtn = document.getElementById('aria-labels-btn')
+//const closePageTitleBtn = document.getElementById('close-page-title-btn')
+const pageTitleBtn = document.getElementById('page-title-btn')
+let pageTitleContainer = ""
+
 
 let tooltip = null
 let tooltipCoords = null
@@ -21,6 +25,17 @@ let leftStyle = "top:-4px;left:-28px;"
 
 let parentElementLayoutContainer = null
 let linksHref = []
+
+// Focus indicator
+let cssRule = `a:focus, *:focus {
+    box-shadow: rgb(0 255 255) 0px 0px 0px 8px;
+    outline: rgb(255, 0, 0) solid 4px !important;
+    outline-offset: 1px !important;
+    border-radius: 2px;
+}`
+let style = document.createElement("style")
+style.appendChild(document.createTextNode(""))
+document.head.appendChild(style)
 
 // for removing event
 const controller = new AbortController()
@@ -127,6 +142,34 @@ const markElementDisplayAttribute = (elm, attribute, color, style, containerId) 
     parentElementLayoutContainer.insertAdjacentElement("beforeend",outlineDiv)
     //layoutContainer.insertAdjacentElement("beforeend",outlineDiv)
 }
+const markElementDisplayAttributeValue = (elm, attribute, color, style, containerId) => {
+    
+    let coords = calculateCoordsForMarker(elm)
+    const outlineDiv = document.createElement("div")
+    parentElementLayoutContainer = document.getElementById(containerId)
+    //position = top / left
+
+    outlineDiv.style.position = "absolute"
+    outlineDiv.style.top = `${coords.top}px`
+    outlineDiv.style.left = `${coords.left}px`
+    outlineDiv.style.width = `${coords.width}px`
+    outlineDiv.style.height = `${coords.height}px`
+    outlineDiv.style.borderRadius = "3px"
+    outlineDiv.style.borderTopLeftRadius = "0"
+
+    outlineDiv.style.outline = `${color} 2px solid`
+    outlineDiv.style.outlineOffset = "2px"
+
+    outlineDiv.innerHTML = `<div style="
+    position:absolute;${style}width:max-content;height:25px;padding:0 3px;
+    border-radius:3px;background-color:${color};color:white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    ${elm.getAttribute(attribute)}
+    </div>`
+
+    parentElementLayoutContainer.insertAdjacentElement("beforeend",outlineDiv)
+    //layoutContainer.insertAdjacentElement("beforeend",outlineDiv)
+}
 const clearOverlay = (containerId) => {
     parentElementLayoutContainer = document.getElementById(containerId)
     parentElementLayoutContainer.innerHTML=''
@@ -228,15 +271,16 @@ const markHrefs = () =>{
 
 
 }
-
-const markFocusedElements = () =>{
-
+const markAriaLabels = () =>{
+    const elementsWithAriaLabel = document.querySelectorAll("[aria-label]")
+    elementsWithAriaLabel.forEach(elm=>{
+        markElementDisplayAttributeValue(elm,"aria-label","tomato",topStyle,"marked-aria-label")
+    })
     
-    
-
-    //style.sheet.deleteRule(sheetIndex)
-
+    console.clear()
+    console.log(elementsWithAriaLabel.length + ' elements found on the page with aria-label attribute.')
 }
+
 
 // Buttons calls
 
@@ -309,26 +353,13 @@ const hrefs = () =>{
 }
 const focusIndicator = () => {
 
-    let cssRule = `a:focus, *:focus {
-        box-shadow: rgb(0 255 255) 0px 0px 0px 8px;
-        outline: rgb(255, 0, 0) solid 4px !important;
-        outline-offset: 1px !important;
-        border-radius: 2px;
-    }`
-    let style = null
-
-    if(isActivatedTheBtn(focusIndicatorBtn)) {
-        style = document.createElement("style")
-        style.appendChild(document.createTextNode(""))
-        document.head.appendChild(style);
+    if(isActivatedTheBtn(focusIndicatorBtn))
         style.sheet.insertRule(cssRule, 0);
-    }
-    else {
-        
-    }
+    
+    else 
+        style.sheet.deleteRule(0)
 
     toggleButton(focusIndicatorBtn)
-    
 }
 
 const currentlyFocused = () =>{
@@ -377,7 +408,47 @@ const textSpacing = () => {
 
     
 }
+const ariaLabels = () => {
 
+    scrollToTop()
+    if(isActivatedTheBtn(ariaLabelsBtn)){
+        markAriaLabels()
+    }
+    else{
+        clearOverlay('marked-aria-label')
+    }
+
+    toggleButton(ariaLabelsBtn)
+}
+const pageTitle = () => {
+    const titleElement = document.getElementsByTagName("title")[0]
+    pageTitleContainer = `<div id='page-title-container' class="tooltip">
+    <div class="tooltip-text"> Page title: <strong>${titleElement.innerHTML}</strong> </div>
+    </div>`
+    const titleContainer = document.createElement("div")
+    const titleContainerInDOM = document.getElementById('page-title-container')
+
+    if( !titleContainerInDOM ){
+        titleContainer.innerHTML = pageTitleContainer
+        document.querySelector('body').appendChild(titleContainer)
+    }
+    else{
+        if(isActivatedTheBtn(pageTitleBtn)){
+            titleContainerInDOM.style = 'display:flex'
+        }
+        else{
+            console.log('Hiding ...'+ titleContainerInDOM.innerHTML)
+            titleContainerInDOM.style = 'display:none'
+        }
+
+    }
+
+    
+    toggleButton(pageTitleBtn)
+}
+const closePageTitle = () =>{
+    pageTitleContainer.style = 'display:none'
+}
 
 // Listeners templates
 
@@ -439,6 +510,15 @@ clickEventListenerAssigner(textSpacingBtn,"click", textSpacing )
 mouseoverEventListenerAssigner(textSpacingBtn,"mouseover", showTooltip,'Text spacing' )
 mouseoutEventListenerAssigner(textSpacingBtn,"mouseout", hideTooltip)
 
+clickEventListenerAssigner(ariaLabelsBtn,"click", ariaLabels )
+mouseoverEventListenerAssigner(ariaLabelsBtn,"mouseover", showTooltip,'Aria labels' )
+mouseoutEventListenerAssigner(ariaLabelsBtn,"mouseout", hideTooltip)
+
+clickEventListenerAssigner(pageTitleBtn,"click", pageTitle )
+mouseoverEventListenerAssigner(pageTitleBtn,"mouseover", showTooltip,'Page title' )
+mouseoutEventListenerAssigner(pageTitleBtn,"mouseout", hideTooltip)
+
+//clickEventListenerAssigner(closePageTitleBtn,"click",closePageTitle)
 
 // --------------
 
