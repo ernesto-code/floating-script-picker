@@ -69,17 +69,13 @@
     border-radius: 10px;
     z-index: 2147483646;
 }
-i{
-    /*margin: 20px 5px;*/
-}
-
 /*Tool tip*/
 .tooltip{
     position: fixed;
     top:0;
     left: 60px;
     width: fit-content;
-    height: 20px;
+    height: fit-content;
     padding: 10px;
     background-color: black;
     border: white thin solid;

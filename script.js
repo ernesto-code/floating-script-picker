@@ -62,7 +62,6 @@ const showTooltip = (textToShow,targetButton, coords)=>{
     if(!tooltip){ 
         const tooltipContainer = document.createElement("div")
         tooltipContainer.innerHTML = `<div class="tooltip" id='button-tooltip' style='position:fixed; top:${coords[0]}px;left:${coords[1]}px'>
-        <div class="tooltip-icon"><i class="fa-solid fa-caret-left"></i></div>
         <div class="tooltip-text">${textToShow}</div>
         </div>`
         targetButton.insertAdjacentElement('afterend',tooltipContainer)
