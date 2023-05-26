@@ -70,7 +70,7 @@
     z-index: 2147483646;
 }
 /*Tool tip*/
-.tooltip{
+.tk-tooltip{
     position: fixed;
     top:0;
     left: 60px;
@@ -84,15 +84,15 @@
     display: flex;
     
 }
-.tooltip-text{
+.tk-tooltip-text{
     color: white;
 }
-.tooltip-icon{
+.tk-tooltip-icon{
     position: relative;
     top:0px;
     left:-15px;
 }
-.tooltip-btn{
+.tk-tooltip-btn{
     margin-left: 15px;
 }
 #page-title-container{
@@ -161,6 +161,7 @@
     top:60px;
     left: 60px;
     width: fit-content;
+    max-width: 300px;
     height: fit-content;
     padding: 0 10px 10px;
     background-color: white;
@@ -196,4 +197,40 @@ li{
 #props-popup-close-btn:active{
     background-color: #eee;
     border-radius: 3px;
+}
+li span strong{
+    padding-right: 10px;
+}
+.hovered-style{
+    background-color: cyan !important;
+    color: black !important;
+
+}
+.hover-outline-inner{
+    outline: black medium dotted !important;
+    outline-offset: -3px !important;
+}
+.hover-outline-outter{
+    outline: white 2px dotted !important;
+    outline-offset: 0px !important;
+}
+.hovered-inspected-element{
+    box-shadow: rgb(0 255 255) 0px 0px 0px 8px;
+    outline: rgb(255, 0, 0) solid 4px !important;
+    outline-offset: 1px !important;
+    border-radius: 2px;
+    background-color: rgb(0 255 255);
+}
+.popup-props-color-container{
+    width: fit-content;
+    display: flex;
+  
+}
+.text-color-code{
+    margin-right: 5px;
+}
+.text-color-square{
+    width: 15px;
+    height: 15px;
+    padding-top: 2px;
 }

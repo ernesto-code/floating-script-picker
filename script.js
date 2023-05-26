@@ -71,15 +71,15 @@ const scrollToTop = () => {
     window.scrollTo(0, 0)
 }
 const activateStyle = (elm) => {
-    elm.classList.add('toolkit-active-btn')
+    elm.classList.add('tk-toolkit-active-btn')
 }
 const toggleButton =(elm)=>{
 
-    if(elm.classList.contains('light-blue')){
-        if(elm.classList.contains('light-blue-toolkit-active-btn')) 
-            elm.classList.remove('light-blue-toolkit-active-btn')
+    if(elm.classList.contains('tk-light-blue')){
+        if(elm.classList.contains('tk-light-blue-toolkit-active-btn')) 
+            elm.classList.remove('tk-light-blue-toolkit-active-btn')
         else
-            elm.classList.add('light-blue-toolkit-active-btn')
+            elm.classList.add('tk-light-blue-toolkit-active-btn')
     }
     else{
 
@@ -97,8 +97,8 @@ const showTooltip = (textToShow,targetButton, coords)=>{
     tooltip = document.getElementById('button-tooltip')
     if(!tooltip){ 
         const tooltipContainer = document.createElement("div")
-        tooltipContainer.innerHTML = `<div class="tooltip" id='button-tooltip' style='position:fixed; top:${coords[0]}px;left:${coords[1]}px'>
-        <div class="tooltip-text">${textToShow}</div>
+        tooltipContainer.innerHTML = `<div class="tk-tooltip" id='button-tooltip' style='position:fixed; top:${coords[0]}px;left:${coords[1]}px'>
+        <div class="tk-tooltip-text">${textToShow}</div>
         </div>`
         targetButton.insertAdjacentElement('afterend',tooltipContainer)
     }
@@ -335,7 +335,7 @@ const markHrefs = () =>{
     })
     console.clear()
     console.log(links.length + ' links found on the page.')
-    console.log(linksSameUrls + ' links with the same URL than the original one.')
+    console.log(linksSameUrls + ' links with the same URL')
 
 
 }
@@ -1127,6 +1127,7 @@ mouseoutEventListenerAssigner(bbvaSessionExtentionBtn,"mouseout", hideTooltip)
 
 const propsPopup = document.getElementById("props-popup")
 const propsPopupCloseBtn = document.getElementById("props-popup-close-btn")
+let hoveredElement = null
 
 
 const toggleElement = (element) =>{
@@ -1135,6 +1136,16 @@ const toggleElement = (element) =>{
     else
         element.style.display = 'none'
 }
+const displayElement = (element) =>{
+        element.style.display = 'block'
+}
+const hideElement = (element) =>{
+    element.style.display = 'none'
+}
+const truncateString = (str, n) =>{
+    return (str.length > n) ? str.slice(0, n-1) + '&hellip;' : str
+}
+
 
 const getHtmlRole = (elm) => {
     let role = null
@@ -1185,7 +1196,7 @@ if(hasMap.get(tag)){
     }
 
 }else{
-    console.log("Getting the role by tagName")
+    //console.log("Getting the role by tagName")
     return tag
 }
 
@@ -1194,46 +1205,220 @@ if(hasMap.get(tag)){
     
 }
 const collectDataFromElement = (element) => {
-    let tag,htmlRole,href, ariaRole,alt,ariaLabel
+    let tag, htmlRole, href, ariaRole,alt,ariaLabel
 
     tag = element.tagName
-    //htmlRole = 
+    htmlRole = getHtmlRole(element)
+    href = element.getAttribute("href") ? element.getAttribute("href") : null
+    ariaRole = element.getAttribute("role") ? element.getAttribute("role") : null
+    alt = element.getAttribute("alt") ? element.getAttribute("alt") : null
+    ariaLabel= element.getAttribute("aria-label") ? element.getAttribute("aria-label") : null
+
+    return {
+        "tag":tag,
+        "htmlRole":htmlRole,
+        "href":href,
+        "ariaRole":ariaRole,
+        "altText":alt,
+        "ariaLabel":ariaLabel,
+    }
+
+    // Fg Color
+    // Bg color
+    // CRR
+    // Font size
+}
+const fillPropsPopup = (obj)=>{
+
+    let popupHtml = ''
+   
+    obj.tag ? popupHtml += `<li><span><strong>tag: </strong></span><span><i>${obj.tag}</i></span></li>` : popupHtml += '<li></li>'
+    obj.htmlRole ? popupHtml += `<li><span><strong>html role: </strong></span><span><i>${obj.htmlRole}</i></span></li>` : popupHtml += '<li></li>'
+    obj.href ? popupHtml += `<li><span><strong>href: </strong></span><span><i>${truncateString(obj.href,30)}</i></span></li><hr>` : popupHtml += '<li></li><hr>'
+    obj.ariaRole ? popupHtml += `<li><span><strong>aria-role: </strong></span><span><i>${obj.ariaRole}</i></span></li>` : popupHtml += '<li></li>'
+    obj.altText ? popupHtml += `<li><span><strong>alt text: </strong></span><span><i>${truncateString(obj.altText,30)}</i></span></li>` : popupHtml += '<li></li>'
+    obj.ariaLabel ? popupHtml += `<li><span><strong>aria-label: </strong></span><span><i>${truncateString(obj.ariaLabel,30)}</i></span></li>`: popupHtml += '<li></li>'
+
+
+
+    propsPopup.children[1].innerHTML = '<ul>'+ popupHtml + '</ul>'
 
 }
+const removeHoverStyles = (elm) =>{
+    elm.classList.remove('hovered-inspected-element')
+}
+const movePropsPopup = (event)=>{
+
+    let top = event.clientY
+    let left = event.clientX
+
+    propsPopup.style =  `position:fixed;top:${top+10}px;left: ${left+10}px;`
+    
+}
+
+
+const mouseoverElementHandler = (event) =>{
+
+    const targetElement = event.target
+
+            if(!toolkitElement.contains(targetElement)){
+                targetElement.classList.add('hovered-inspected-element')
+                fillPropsPopup(collectDataFromElement(targetElement))
+                movePropsPopup(event)
+                displayElement(propsPopup)
+            }
+            else{
+                //console.log('Mouseover - Toolkit elements hovered')
+            }
+}
+const mouseoutElementHandler = (event) =>{
+
+    const targetElement = event.target
+
+    if(!toolkitElement.contains(targetElement)){
+        removeHoverStyles(targetElement)
+        hideElement(propsPopup)
+    }
+    else{
+        //console.log('Mouseout - Toolkit elements hovered')
+    }
+}
+
 
 const elementInspector = () =>{
-    toggleElement(propsPopup)
+    //toggleElement(propsPopup)
 
     if(isActivatedTheBtn(elementInspectorBtn)) {
-        document.addEventListener("click", (evt) => {
+        // ADD THE LISTENERS
+        document.addEventListener('mouseover', mouseoverElementHandler)
+        document.addEventListener('mouseout', mouseoutElementHandler)
+
+        // Display when alt+Right click
+        document.addEventListener( "contextmenu", (evt) => {
+            evt.preventDefault()
+
             if(evt.altKey){
-                // set data in popup
-                console.log(getHtmlRole(evt.target))
+                // REMOVE THE LISTENERS
+                document.removeEventListener('mouseover', mouseoverElementHandler)
+                document.removeEventListener('mouseout', mouseoutElementHandler)
+                
+                fillPropsPopup(collectDataFromElement(evt.target))
                 // set new position
             }
         },
             { signal: controller.signal }
         )
+        
     }
     else {
-        controller.abort()
+        // REMOVE THE LISTENERS
+        document.removeEventListener('mouseover', mouseoverElementHandler)
+        document.removeEventListener('mouseout', mouseoutElementHandler)
     }
-    toggleButton(elementInspectorBtn)
-
     
+    toggleButton(elementInspectorBtn)
 }
 
 clickEventListenerAssigner(elementInspectorBtn,"click", elementInspector )
 mouseoverEventListenerAssigner(elementInspectorBtn,"mouseover", showTooltip,'Element inspector (alt + click)' )
 mouseoutEventListenerAssigner(elementInspectorBtn,"mouseout", hideTooltip)
 
-
 propsPopupCloseBtn.addEventListener("click",()=>{
     toggleElement(propsPopup)
+    removeHoverStyles(document.querySelector('.hovered-inspected-element'))
+    toggleButton(elementInspectorBtn)
 })
 
 
+// Color Contrast
+
+const getColorContrastProps = (targetElement) =>{
+
+    const bg = targetElement.style.background
+    const color = window.getComputedStyle(targetElement, null).getPropertyValue('color')
+
+    return { color: color, bg: bg }
+}
+
+
+const a11yFooter = document.getElementsByTagName("footer")[0]
+ a11yFooter.innerHTML = `
+ <audio controls="" src="http://audio-mp3.ibiblio.org:8000/wcpe.mp3" data-wa11y-widget-original-fontsize="16" data-wa11y-widget-original-lineheight="norm">
+ Your browser does not support the
+ <code class="wa11y-widget-dummy-class" data-wa11y-widget-original-fontsize="13" data-wa11y-widget-original-lineheight="norm">audio</code> element.
+</audio>`
 
 
 
+
+/* Identify buttons and link roles 
+
+const controls = document.querySelectorAll("*")
+let controlsWithRole = []
+let currentHTML =''
+
+controls.forEach(control =>{
+    if(control.getAttribute('role') == 'link' || control.getAttribute('role') == 'button'){
+        controlsWithRole.push(control)
+         currentHTML = control.innerHTML
+         control.innerHTML = `<span style='color:red !important;background-color:blue !important;'>${control.getAttribute('role')}</span>`+ currentHTML
+
+    }
+        
+})
+
+
+const controls = document.querySelectorAll("*")
+let controlsWithRole = []
+let currentHTML =''
+
+controls.forEach(control =>{
+    if(control.getAttribute('aria-hidden') == 'true'){
+        controlsWithRole.push(control)
+         currentHTML = control.innerHTML
+         control.innerHTML = `<span style='color:red !important;background-color:blue !important;'>${'Hidden'}</span>`+ currentHTML
+
+    }
+        
+})
+
+console.log(controls.length)
+
+
+
+const controls = document.querySelectorAll("*")
+let controlsWithRole = []
+let currentHTML =''
+
+controls.forEach(control =>{
+    if(control.getAttribute('id') == 'true'){
+        controlsWithRole.push(control)
+         currentHTML = control.innerHTML
+         control.innerHTML = `<span style='color:red !important;background-color:blue !important;'>${control.getAttribute('id')}</span>`+ currentHTML
+
+    }
+        
+})
+
+console.log(controls.length)
+
+
+const controls = document.querySelectorAll("*")
+let controlsWithRole = []
+let currentHTML =''
+
+controls.forEach(control =>{
+    if(control.getAttribute('role') == 'tab'){
+        controlsWithRole.push(control)
+         currentHTML = control.innerHTML
+         control.innerHTML = `<span style='color:red !important;background-color:blue !important;'>${'TAB'}</span>`+ currentHTML
+
+    }
+        
+})
+
+console.log(controls.length)
+
+
+*/
 

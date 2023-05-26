@@ -124,29 +124,80 @@
                     <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
                 </svg>
             </button>
-            <ul>
-                <li>
-                    <span><strong>tag</strong></span><span><i>h1</i></span>
-                </li>
-                <li>
-                    <span><strong>html role:</strong></span><span><i>button</i></span>
-                </li>
-                <li>
-                    <span><strong>href:</strong></span><span><i>http://google.com</i></span>
-                </li>
-            </ul>
-            <hr>
-            <ul>
-                <li>
-                    <span><strong>aria role:</strong></span><span><i>button</i></span>
-                </li>
-                <li>
-                    <span><strong>alt:</strong></span><span><i>My heading alternative text</i></span>
-                </li>
-                <li>
-                    <span><strong>aria-label:</strong></span><span><i>This is my heading</i></span>
-                </li>
-            </ul>
+            <div></div>
+        </div>
+
+        <div id = 'props-popup' style="display:none">
+            <button id="props-popup-close-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="18px" height="18px" fill="grey">
+                    <path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/>
+                </svg>
+            </button>
+            <div>
+                <ul>
+                    <li><span>tag: </span><span><i>IMG</i></span></li>
+                    <li><span>html role: </span><span><i>image</i></span></li>
+                    <li></li><hr><l i></li>
+                    <li><span>alt text: </span><span><i>My alternative text to the im…</i></span></li>
+                    <li></li>
+                    <li></li><hr>
+
+                    <li>
+                        <strong>Text color contrast <svg width="15px" height="15px" fill="#999"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M272 0H396.1c12.7 0 24.9 5.1 33.9 14.1l67.9 67.9c9 9 14.1 21.2 14.1 33.9V336c0 26.5-21.5 48-48 48H272c-26.5 0-48-21.5-48-48V48c0-26.5 21.5-48 48-48zM48 128H192v64H64V448H256V416h64v48c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48z"/>
+                        </svg> </strong>
+
+                            
+
+                    </li>
+                    <li>
+                        <span>fg color: </span>
+                        <div class="popup-props-color-container">
+                            <span class="text-color-code">#ff0000</span>
+                            <div class="text-color-square">
+                                <svg width="15px" height="15px" fill="#ff0000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path d="M0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span>bg color: </span>
+                        <div class="popup-props-color-container">
+                            <span class="text-color-code">#00ff00</span>
+                            <div class="text-color-square">
+                                <svg width="15px" height="15px" fill="#00ff00" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path d="M0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <span>size: </span>
+                        <span>12px <i>(10 points)</i></span>
+                    </li>
+                    <li>
+                        <span>weight: </span>
+                        <span>300 <i>(No Bold)</i></span>
+                    </li>
+                    <li>
+                        <span><strong>contrast ratio: </strong></span>
+                        <div class="popup-props-color-container">
+                            <span class="text-color-code">2.91:1</span>
+                            <div class="text-color-square">
+                                <!-- Pass icon-->
+                                <!--svg width="15px" height="15px" fill="#079417" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
+                                </svg-->
+                                <!-- Fail icon-->
+                                <svg width="15px" height="15px" fill="#ff0000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div id="expandable-section" style="display:block" class="transition-all">
@@ -187,9 +238,7 @@
                 <div class="separator"></div>
                 <!-- Element Inspector -->
                 <button id="element-inspector-btn" class="centered btn-dark toolkit-btn" style="padding: 0px 2px 2px 2px;" >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="30px" height="30px" fill="white">
-                        <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
-                    </svg>
+                    <svg width="25px" height="25px" fill="white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.926 2.114A1.505 1.505 0 0 0 2 3.5v1.083h2V4h.586V2.465l-.003-.002V2H3.5c-.203 0-.397.04-.574.114ZM6.75 2v2h2.167V2H6.75Zm4.333 0v2h2.167V2h-2.167Zm4.334 0v2H16v.583l1.535.001H18V3.5A1.5 1.5 0 0 0 16.5 2h-1.083ZM18 6.75h-2v2.167h2V6.75ZM8.917 18v-2H6.75v2h2.167Zm-4.334 0v-.46l.001-.001V16h-.582v-.586H2.467l-.003.003H2V16.5c0 .203.04.397.114.574h.001c.152.366.445.66.811.811v.001c.177.073.37.114.574.114h1.083ZM2 13.25h2v-2.167H2v2.167Zm0-4.333h2V6.75H2v2.167ZM11.642 10.08a.5.5 0 0 0-.682.614l2.468 7.336a.5.5 0 0 0 .809.212l1.43-1.288 2.436 2.706a1 1 0 0 0 1.486-1.338l-2.437-2.706 1.656-1.491a.5.5 0 0 0-.127-.826l-7.039-3.22Z"></path></svg>
                 </button>
                 <div class="separator"></div>
                 <!-- Br finder -->
@@ -200,7 +249,7 @@
                 <!-- Live regions -->
                 <button id = 'liveregions-btn' class="centered btn-dark toolkit-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="18px" height="18px" fill="white">
-                        <path d="M480 32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9L381.7 53c-48 48-113.1 75-181 75H192 160 64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64l0 128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352l8.7 0c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.4c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4V32zm-64 76.7V240 371.3C357.2 317.8 280.5 288 200.7 288H192V192h8.7c79.8 0 156.5-29.8 215.3-83.3z"/>
+                        <path d="M480 32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9L381.7 53c-48 48-113.1 75-181 75H192 160 64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64l0 128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352l8.7 0c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.4c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4V32zm-64 76.7V240 371.3C357.2 317.8 280.5 288 200.7 288H192V192h8.7c79.8 0 156.5-29.8 215.3-83.3z" ></path>
                     </svg>
                 </button>
                 <div class="separator"></div>
